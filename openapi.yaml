@@ -1,3 +1,4 @@
+
 openapi: 3.0.1
 info:
   title: Roan Assistant API
@@ -8,12 +9,14 @@ servers:
 paths:
   /calendar/all:
     get:
+      operationId: getCalendarEvents
       summary: Get all calendar events
       responses:
         '200':
           description: Successful response
   /calendar/create:
     post:
+      operationId: createCalendarEvent
       summary: Create a new calendar event
       requestBody:
         required: true
@@ -26,12 +29,14 @@ paths:
           description: Event created
   /gmail/threads:
     get:
+      operationId: getGmailThreads
       summary: Get all Gmail threads
       responses:
         '200':
           description: Successful response
   /gmail/send:
     post:
+      operationId: sendGmailMessage
       summary: Send a new email
       requestBody:
         required: true
@@ -44,12 +49,14 @@ paths:
           description: Email sent
   /drive/files:
     get:
+      operationId: listDriveFiles
       summary: List all Google Drive files
       responses:
         '200':
           description: Successful response
   /drive/upload:
     post:
+      operationId: uploadDriveFile
       summary: Upload a file to Google Drive
       requestBody:
         required: true
@@ -62,12 +69,14 @@ paths:
           description: File uploaded
   /tasks/all:
     get:
+      operationId: getTasks
       summary: Get all Google Tasks
       responses:
         '200':
           description: Successful response
   /tasks/add:
     post:
+      operationId: addTask
       summary: Add a new Google Task
       requestBody:
         required: true
@@ -80,6 +89,7 @@ paths:
           description: Task created
   /contacts/search:
     post:
+      operationId: searchContacts
       summary: Search for contacts
       requestBody:
         required: true
@@ -92,6 +102,7 @@ paths:
           description: Search results
   /contacts/create:
     post:
+      operationId: createContact
       summary: Create a contact
       requestBody:
         required: true
@@ -104,6 +115,7 @@ paths:
           description: Contact created
   /contacts/update:
     put:
+      operationId: updateContact
       summary: Update a contact
       requestBody:
         required: true
@@ -116,6 +128,7 @@ paths:
           description: Contact updated
   /contacts/delete:
     delete:
+      operationId: deleteContact
       summary: Delete a contact
       requestBody:
         required: true
