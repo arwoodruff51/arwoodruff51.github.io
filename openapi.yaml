@@ -1,0 +1,128 @@
+openapi: 3.0.1
+info:
+  title: Roan Assistant API
+  description: API for accessing Gmail, Calendar, Drive, Tasks, and Contacts.
+  version: '1.0.0'
+servers:
+  - url: https://web-production-cf55.up.railway.app
+paths:
+  /calendar/all:
+    get:
+      summary: Get all calendar events
+      responses:
+        '200':
+          description: Successful response
+  /calendar/create:
+    post:
+      summary: Create a new calendar event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Event created
+  /gmail/threads:
+    get:
+      summary: Get all Gmail threads
+      responses:
+        '200':
+          description: Successful response
+  /gmail/send:
+    post:
+      summary: Send a new email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Email sent
+  /drive/files:
+    get:
+      summary: List all Google Drive files
+      responses:
+        '200':
+          description: Successful response
+  /drive/upload:
+    post:
+      summary: Upload a file to Google Drive
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: File uploaded
+  /tasks/all:
+    get:
+      summary: Get all Google Tasks
+      responses:
+        '200':
+          description: Successful response
+  /tasks/add:
+    post:
+      summary: Add a new Google Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Task created
+  /contacts/search:
+    post:
+      summary: Search for contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Search results
+  /contacts/create:
+    post:
+      summary: Create a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Contact created
+  /contacts/update:
+    put:
+      summary: Update a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Contact updated
+  /contacts/delete:
+    delete:
+      summary: Delete a contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Contact deleted
