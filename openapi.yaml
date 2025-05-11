@@ -2,7 +2,7 @@
 openapi: 3.0.1
 info:
   title: Roan Assistant API
-  description: API for accessing Gmail, Calendar, Drive, Tasks, and Contacts.
+  description: API for accessing Gmail, Calendar, Drive, Tasks, Contacts.
   version: '1.0.0'
 servers:
   - url: https://web-production-cf55.up.railway.app
@@ -24,6 +24,15 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                summary:
+                  type: string
+                start:
+                  type: string
+                end:
+                  type: string
+                timezone:
+                  type: string
       responses:
         '200':
           description: Event created
@@ -44,6 +53,13 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                to:
+                  type: string
+                subject:
+                  type: string
+                message:
+                  type: string
       responses:
         '200':
           description: Email sent
@@ -64,6 +80,14 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                filename:
+                  type: string
+                fileContent:
+                  type: string
+                  format: byte
+                mimeType:
+                  type: string
       responses:
         '200':
           description: File uploaded
@@ -84,6 +108,11 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                title:
+                  type: string
+                notes:
+                  type: string
       responses:
         '200':
           description: Task created
@@ -97,6 +126,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                query:
+                  type: string
       responses:
         '200':
           description: Search results
@@ -110,6 +142,13 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
       responses:
         '200':
           description: Contact created
@@ -123,6 +162,15 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                contactId:
+                  type: string
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
       responses:
         '200':
           description: Contact updated
@@ -136,6 +184,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                contactId:
+                  type: string
       responses:
         '200':
           description: Contact deleted
