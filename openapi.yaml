@@ -1,26 +1,33 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
-  title: Roan Assistant API
+  title: Roan Universal Assistant API
+  version: 1.0.0
   description: Access Gmail, Calendar, Drive, Tasks, and Contacts for Zädi using a unified API.
-  version: '1.0'
+
 servers:
   - url: https://web-production-cf55.up.railway.app
+
 paths:
   /calendar/all:
     get:
-      summary: Get all upcoming calendar events
+      operationId: getCalendarEvents
+      summary: Get upcoming Google Calendar events
       responses:
         '200':
-          description: Successful response
+          description: A list of upcoming calendar events.
+
   /gmail/threads:
     get:
+      operationId: getGmailThreads
       summary: Get Gmail threads
       responses:
         '200':
-          description: Successful response
+          description: A list of Gmail threads.
+
   /gmail/send:
     post:
-      summary: Send an email via Gmail
+      operationId: sendGmailMessage
+      summary: Send a Gmail message
       requestBody:
         required: true
         content:
@@ -36,15 +43,19 @@ paths:
                   type: string
       responses:
         '200':
-          description: Email sent
+          description: Sent message metadata
+
   /drive/files:
     get:
+      operationId: listDriveFiles
       summary: List files in Google Drive
       responses:
         '200':
-          description: Successful response
+          description: A list of files in Drive.
+
   /drive/upload:
     post:
+      operationId: uploadDriveFile
       summary: Upload a file to Google Drive
       requestBody:
         required: true
@@ -59,16 +70,20 @@ paths:
                   type: string
       responses:
         '200':
-          description: File uploaded
+          description: Uploaded file metadata
+
   /tasks/all:
     get:
+      operationId: getTasks
       summary: Get all Google Tasks
       responses:
         '200':
-          description: Successful response
+          description: A list of tasks by task list.
+
   /tasks/add:
     post:
-      summary: Add a task to Google Tasks
+      operationId: addTask
+      summary: Add a new Google Task
       requestBody:
         required: true
         content:
@@ -82,10 +97,12 @@ paths:
                   type: object
       responses:
         '200':
-          description: Task added
+          description: The created task
+
   /contacts/search:
     post:
-      summary: Search Google Contacts
+      operationId: searchContacts
+      summary: Search your Google Contacts
       requestBody:
         required: true
         content:
@@ -97,9 +114,11 @@ paths:
                   type: string
       responses:
         '200':
-          description: Contacts found
+          description: Matching contact results
+
   /contacts/create:
     post:
+      operationId: createContact
       summary: Create a new contact
       requestBody:
         required: true
@@ -112,10 +131,12 @@ paths:
                   type: object
       responses:
         '200':
-          description: Contact created
+          description: The created contact
+
   /contacts/update:
     put:
-      summary: Update an existing contact
+      operationId: updateContact
+      summary: Update a contact
       requestBody:
         required: true
         content:
@@ -129,9 +150,11 @@ paths:
                   type: object
       responses:
         '200':
-          description: Contact updated
+          description: The updated contact
+
   /contacts/delete:
     delete:
+      operationId: deleteContact
       summary: Delete a contact
       requestBody:
         required: true
@@ -144,4 +167,4 @@ paths:
                   type: string
       responses:
         '200':
-          description: Contact deleted
+          description: Deletion confirmation
