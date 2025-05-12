@@ -1,52 +1,26 @@
-
 openapi: 3.0.1
 info:
   title: Roan Assistant API
-  description: API for accessing Gmail, Calendar, Drive, Tasks, Contacts.
-  version: '1.0.0'
+  description: Access Gmail, Calendar, Drive, Tasks, and Contacts for Zädi using a unified API.
+  version: '1.0'
 servers:
   - url: https://web-production-cf55.up.railway.app
 paths:
   /calendar/all:
     get:
-      operationId: getCalendarEvents
-      summary: Get all calendar events
+      summary: Get all upcoming calendar events
       responses:
         '200':
           description: Successful response
-  /calendar/create:
-    post:
-      operationId: createCalendarEvent
-      summary: Create a new calendar event
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                summary:
-                  type: string
-                start:
-                  type: string
-                end:
-                  type: string
-                timezone:
-                  type: string
-      responses:
-        '200':
-          description: Event created
   /gmail/threads:
     get:
-      operationId: getGmailThreads
-      summary: Get all Gmail threads
+      summary: Get Gmail threads
       responses:
         '200':
           description: Successful response
   /gmail/send:
     post:
-      operationId: sendGmailMessage
-      summary: Send a new email
+      summary: Send an email via Gmail
       requestBody:
         required: true
         content:
@@ -58,21 +32,19 @@ paths:
                   type: string
                 subject:
                   type: string
-                message:
+                body:
                   type: string
       responses:
         '200':
           description: Email sent
   /drive/files:
     get:
-      operationId: listDriveFiles
-      summary: List all Google Drive files
+      summary: List files in Google Drive
       responses:
         '200':
           description: Successful response
   /drive/upload:
     post:
-      operationId: uploadDriveFile
       summary: Upload a file to Google Drive
       requestBody:
         required: true
@@ -81,27 +53,22 @@ paths:
             schema:
               type: object
               properties:
-                filename:
+                file_name:
                   type: string
-                fileContent:
-                  type: string
-                  format: byte
-                mimeType:
+                file_path:
                   type: string
       responses:
         '200':
           description: File uploaded
   /tasks/all:
     get:
-      operationId: getTasks
       summary: Get all Google Tasks
       responses:
         '200':
           description: Successful response
   /tasks/add:
     post:
-      operationId: addTask
-      summary: Add a new Google Task
+      summary: Add a task to Google Tasks
       requestBody:
         required: true
         content:
@@ -109,17 +76,16 @@ paths:
             schema:
               type: object
               properties:
-                title:
+                tasklist_id:
                   type: string
-                notes:
-                  type: string
+                task:
+                  type: object
       responses:
         '200':
-          description: Task created
+          description: Task added
   /contacts/search:
     post:
-      operationId: searchContacts
-      summary: Search for contacts
+      summary: Search Google Contacts
       requestBody:
         required: true
         content:
@@ -131,11 +97,10 @@ paths:
                   type: string
       responses:
         '200':
-          description: Search results
+          description: Contacts found
   /contacts/create:
     post:
-      operationId: createContact
-      summary: Create a contact
+      summary: Create a new contact
       requestBody:
         required: true
         content:
@@ -143,19 +108,14 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                email:
-                  type: string
-                phone:
-                  type: string
+                contact:
+                  type: object
       responses:
         '200':
           description: Contact created
   /contacts/update:
     put:
-      operationId: updateContact
-      summary: Update a contact
+      summary: Update an existing contact
       requestBody:
         required: true
         content:
@@ -163,20 +123,15 @@ paths:
             schema:
               type: object
               properties:
-                contactId:
+                resourceName:
                   type: string
-                name:
-                  type: string
-                email:
-                  type: string
-                phone:
-                  type: string
+                update:
+                  type: object
       responses:
         '200':
           description: Contact updated
   /contacts/delete:
     delete:
-      operationId: deleteContact
       summary: Delete a contact
       requestBody:
         required: true
@@ -185,7 +140,7 @@ paths:
             schema:
               type: object
               properties:
-                contactId:
+                resourceName:
                   type: string
       responses:
         '200':
