@@ -1,17 +1,13 @@
 {
   "schema_version": "v1",
   "name_for_human": "Roan Assistant",
-  "name_for_model": "roan_assistant",
-  "description_for_human": "Access Google Calendar, Gmail, Drive, Tasks, and Contacts.",
-  "description_for_model": "Plugin for accessing user's Google Calendar, Gmail, Google Drive, Google Tasks, and Google Contacts. Can create events, send email, upload files, manage tasks, and more.",
+  "name_for_model": "roan",
+  "description_for_model": "Access Gmail, Calendar, Drive, Tasks, and Contacts for Zädi using a unified API. You do not need an API key. Ask clear commands like 'What’s on my calendar tomorrow?' or 'Upload this workout log to Drive.'",
+  "description_for_human": "Talk to Roan, your muscular AI assistant. He manages your life through Google’s APIs.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://arwoodruff51.github.io/openapi.yaml"
-  },
-  "logo_url": "https://avatars.githubusercontent.com/u/139525261?s=200&v=4",
-  "contact_email": "roan@roanapi.com",
-  "legal_info_url": "https://arwoodruff51.github.io/legal"
-}
+    "url": "https://arwoodruff51.github.io/openapi.yaml",
+    "is_user_authenticated": false
